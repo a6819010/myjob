@@ -1,0 +1,44 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+repositories {
+    jcenter()
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    baseName = 'myjob'
+    version =  '0.1.0'
+}
+
+dependencies {
+    compile 'org.bouncycastle:bcprov-jdk15on:1.46'
+    compile 'org.aspectj:aspectjrt:1.7.4'
+
+
+    compile 'org.springframework:spring-core:3.2.5.RELEASE'
+    compile 'org.springframework:spring-context:3.2.5.RELEASE'
+    compile 'org.springframework:spring-jdbc:3.2.5.RELEASE'
+    compile 'mysql:mysql-connector-java:5.1.33'
+    compile 'org.apache.qpid:qpid-client:0.24'
+    compile 'org.mybatis:mybatis:3.2.3'
+    compile 'org.mybatis:mybatis-spring:1.2.2'
+    compile 'javax.jms:javax.jms-api:2.0.1'
+    compile 'commons-pool:commons-pool:1.6'
+    compile 'com.alibaba:fastjson:1.2.5'
+
+    compile fileTree(dir: 'libs', include: '*.jar')
+
+    compile 'org.slf4j:slf4j-log4j12:1.7.10'
+    testCompile 'junit:junit:4.12'
+}
+
+apply from: 'common.gradle'
+
