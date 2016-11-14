@@ -1,22 +1,18 @@
 package com.hfyl.myjob.main;
 
-import com.hfyl.myjob.util.Constants;
-import com.youguu.core.logging.Log;
-import com.youguu.core.logging.LogFactory;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import com.hfyl.myjob.util.PropertiesUtil;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+
+import java.io.IOException;
 
 @Configuration
 @ComponentScan(basePackages="com.hfyl.*")
 public class Main {
-	private static Log logger = LogFactory.getLog(Constants.LOG_NAME);
-	
-	public static void main(String[] args) {
+
+	public static void main(String[] args) throws IOException {
+		PropertiesUtil.getProperties("properties/log4j.properties");
 		new AnnotationConfigApplicationContext(Main.class);
-		logger.info("====================Main START END===========================");
 	}
 
 	@Bean

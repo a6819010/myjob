@@ -1,8 +1,7 @@
 package com.hfyl.myjob.task;
 
 import com.hfyl.myjob.util.Constants;
-import com.youguu.core.logging.Log;
-import com.youguu.core.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -22,7 +21,7 @@ import org.springframework.stereotype.Service;
 @PropertySource("classpath:properties/jobConfig.properties")
 public class DemoJob {
 
-	private static Log logger = LogFactory.getLog(Constants.LOG_NAME);
+	private static Logger logger = Logger.getLogger(Constants.LOG_NAME);
 
 	/**
 	 * 货币job
@@ -33,7 +32,7 @@ public class DemoJob {
 	@Scheduled(cron = "${demoJob}")
 	public void demo()
 	{
-		System.out.println("---------------正在执行中");
+		logger.info("我正在做一个测试");
 	}
 
 }
